@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+
+sudo: false
+
+before_install:
+  - composer self-update
+  - composer config -g github-oauth.github.com "$GITHUB_TOKEN"
+
+install:
+  - composer update --prefer-source $COMPOSER_FLAGS
+
+script: phpunit --coverage-clover=coverage.clover
+
+after_script:
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+env:
+  global:
+    - secure: siWhuwfa+mNQiv2msTGk7ryRXfqPUD28CKxXSOg3Fy47yjPxcSt8ZVQATRiCvgzQARIfIOF7sGpmHwQnOrAfSm9b8SpJHa9nxTrJ0MCMoDQ/DcUcGG2a5lL1OF9nolpT+8IWxx6fn7Zts7ubMDIWUtvZmTWm1S488E99KR068QGtspr1NZhVJ/MBfatkKC23ufw8HsTEjQMYsj2t+sBarqrbPP5BVPyi6UOO3aey4d733EYsxxSYR49DS2Pv2RF0Wn+aFAnhfhg121ZqhY0c0vHCONFSjsNEgoHoD6hOC3XMNII1cisTkGXt/c6ImSwL5bKswqspEXWHSEqsprTQLUOQhZXzLMnoKsi3pigcolmXTmMkWsG3fDK5i/77SSBo9tOBh4FbLcJDhHSM34NL8Xox5U9HvhltFrj1USF7W5xrh7ElxMWx4ILrsQ4lIApxsaIE+59xaj9b8XXQAkV7W71sLcNaC3fNCZB65ZEI3BKI4+3OivWXqUEFH2o9P1MrjnhQdMJ+8GIKVSvgaHAGHKeuDrcWC2gx40et1IABG7Zb26yTKV/rw0nrOq7OhJaNSFMVLkIJJqPU78yxucHDZkIjUFW0BE7MQGexIrTZChs673NQYuJElN4ClXPazES6MPkkNZHZe+s5Z0hx3WRGhKjscjBmTiuXTWbhVt8dsbg=
