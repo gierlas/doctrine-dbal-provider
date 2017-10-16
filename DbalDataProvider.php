@@ -4,6 +4,7 @@ namespace Kora\DataProvider\Doctrine\Dbal;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 use Kora\DataProvider\AbstractDataProvider;
+use Kora\DataProvider\Mapper;
 use Kora\DataProvider\OperatorImplementationsList;
 
 
@@ -18,16 +19,10 @@ class DbalDataProvider extends AbstractDataProvider
 	 */
 	private $queryBuilder;
 
-	/**
-	 * @var array
-	 */
-	private $mappings;
-
-	public function __construct(OperatorImplementationsList $implementationsList, QueryBuilder $queryBuilder, array $mappings)
+	public function __construct(OperatorImplementationsList $implementationsList, QueryBuilder $queryBuilder, Mapper $mapper)
 	{
-		parent::__construct($implementationsList);
+		parent::__construct($implementationsList, $mapper);
 		$this->queryBuilder = $queryBuilder;
-		$this->mappings = $mappings;
 	}
 
 	/**
@@ -36,7 +31,8 @@ class DbalDataProvider extends AbstractDataProvider
 	 */
 	public function getFieldMapping(string $name): string
 	{
-		if (isset($this->mappings[$name])) return $this->mappings[$name];
+		$map = $this->mapper->getOperatorFieldMap();
+		if (isset($map[$name])) return $map[$name];
 
 		$from = $this->queryBuilder->getQueryPart('from') ?? [];
 		$mainAlias = $from[0]['alias'] ?? [];
