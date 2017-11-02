@@ -19,7 +19,13 @@ class DbalDataProvider extends AbstractDataProvider
 	 */
 	private $queryBuilder;
 
-	public function __construct(OperatorImplementationsList $implementationsList, QueryBuilder $queryBuilder, Mapper $mapper)
+	/**
+	 * DbalDataProvider constructor.
+	 * @param QueryBuilder                $queryBuilder
+	 * @param OperatorImplementationsList $implementationsList
+	 * @param Mapper                      $mapper
+	 */
+	public function __construct(QueryBuilder $queryBuilder, OperatorImplementationsList $implementationsList, Mapper $mapper)
 	{
 		parent::__construct($implementationsList, $mapper);
 		$this->queryBuilder = $queryBuilder;

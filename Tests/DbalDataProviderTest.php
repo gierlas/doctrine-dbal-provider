@@ -1,6 +1,6 @@
 <?php
 
-namespace Kora\DataProvider\Doctrine\Orm\Tests;
+namespace Kora\DataProvider\Doctrine\Dbal\Tests;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 use Kora\DataProvider\Doctrine\Dbal\DbalDataProvider;
@@ -23,7 +23,7 @@ class DbalDataProviderTest extends TestCase
 	 */
 	public function testFieldMapping(QueryBuilder $queryBuilder, array $mapping, $column, $expectedMapping)
 	{
-		$dataProvider = new DbalDataProvider(new OperatorImplementationsList(), $queryBuilder, new Mapper([], $mapping));
+		$dataProvider = new DbalDataProvider($queryBuilder, new OperatorImplementationsList(), new Mapper([], $mapping));
 
 		$columnMapping = $dataProvider->getFieldMapping($column);
 

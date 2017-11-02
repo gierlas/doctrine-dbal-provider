@@ -51,7 +51,7 @@ class EqualFilterImplementationTest extends TestCase
 			->with($sqlParam, $paramValue)
 			->once();
 
-		$dataProvider = new DbalDataProvider(new OperatorImplementationsList(), $queryBuilder, new Mapper([], [ $paramName => $paramMapping ]));
+		$dataProvider = new DbalDataProvider($queryBuilder, new OperatorImplementationsList(), new Mapper([], [ $paramName => $paramMapping ]));
 
 		$filterDefinition = new EqualFilterDefinition($paramName, true);
 		$filterDefinition->initData([
