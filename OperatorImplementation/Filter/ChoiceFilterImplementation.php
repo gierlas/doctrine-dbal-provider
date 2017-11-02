@@ -59,9 +59,7 @@ class ChoiceFilterImplementation implements OperatorImplementationInterface
 		$values = $definition->getValue();
 		$nameCallback = function ($id) use($definition) { return ':' . $definition->getName() . $id; };
 
-		$in = array_map(
-			function($id, $value) use ($nameCallback) { return $nameCallback($id); }, array_keys($values), $values
-		);
+		$in = array_map(function($id) use ($nameCallback) { return $nameCallback($id); }, array_keys($values));
 
 		$qb->andWhere($qb->expr()->in($field, $in));
 
