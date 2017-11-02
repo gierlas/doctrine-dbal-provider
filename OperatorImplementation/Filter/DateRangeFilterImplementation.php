@@ -5,7 +5,7 @@ namespace Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Kora\DataProvider\DataProviderInterface;
 use Kora\DataProvider\Doctrine\Dbal\DbalDataProvider;
-use Kora\DataProvider\OperatorDefinition\Filter\DateRangeDefinition;
+use Kora\DataProvider\OperatorDefinition\Filter\DateRangeFilterDefinition;
 use Kora\DataProvider\OperatorDefinitionInterface;
 use Kora\DataProvider\OperatorImplementationInterface;
 
@@ -26,7 +26,7 @@ class DateRangeFilterImplementation implements OperatorImplementationInterface
 	 */
 	public function getOperatorDefinitionCode(): string
 	{
-		return DateRangeDefinition::class;
+		return DateRangeFilterDefinition::class;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class DateRangeFilterImplementation implements OperatorImplementationInterface
 	{
 		/**
 		 * @var DbalDataProvider    $dataProvider
-		 * @var DateRangeDefinition $definition
+		 * @var DateRangeFilterDefinition $definition
 		 */
 		$fieldName = $dataProvider->getFieldMapping($definition->getName());
 		$dateStart = $this->prepareDate($definition->getDateStart(), $definition, true);
@@ -57,7 +57,7 @@ class DateRangeFilterImplementation implements OperatorImplementationInterface
 		$this->applyDate($qb, $fieldName, $paramName, $this->getComparisonType(false, $definition->hasTimePart()), $dateEnd);
 	}
 
-	protected function determineFormat(DateRangeDefinition $definition)
+	protected function determineFormat(DateRangeFilterDefinition $definition)
 	{
 		$dateFormat = $definition->hasDatePart() ? 'Y-m-d' : '';
 		$timeFormat = $definition->hasTimePart() ? 'H:i:s' : '';
@@ -67,11 +67,11 @@ class DateRangeFilterImplementation implements OperatorImplementationInterface
 
 	/**
 	 * @param \DateTime|null      $date
-	 * @param DateRangeDefinition $definition
+	 * @param DateRangeFilterDefinition $definition
 	 * @param bool                $isStart
 	 * @return null|\DateTime
 	 */
-	protected function prepareDate($date, DateRangeDefinition $definition, bool $isStart)
+	protected function prepareDate($date, DateRangeFilterDefinition $definition, bool $isStart)
 	{
 		if ($date === null) {
 			return null;
@@ -93,12 +93,12 @@ class DateRangeFilterImplementation implements OperatorImplementationInterface
 	/**
 	 * @param string              $field
 	 * @param DbalDataProvider    $dataProvider
-	 * @param DateRangeDefinition $definition
+	 * @param DateRangeFilterDefinition $definition
 	 * @param \DateTime           $dateStart
 	 * @param \DateTime           $dateEnd
 	 */
 	protected function handleBoth(
-		string $field, DbalDataProvider $dataProvider, DateRangeDefinition $definition,
+		string $field, DbalDataProvider $dataProvider, DateRangeFilterDefinition $definition,
 		\DateTime $dateStart, \DateTime $dateEnd
 	)
 	{

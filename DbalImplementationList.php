@@ -11,7 +11,7 @@ use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Order\SingleOrderImpl
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Pager\LimitOffsetPagerImplementation;
 use Kora\DataProvider\OperatorDefinition\Filter\ChoiceFilterDefinition;
 use Kora\DataProvider\OperatorDefinition\Filter\DateFilterDefinition;
-use Kora\DataProvider\OperatorDefinition\Filter\DateRangeDefinition;
+use Kora\DataProvider\OperatorDefinition\Filter\DateRangeFilterDefinition;
 use Kora\DataProvider\OperatorDefinition\Filter\RangeFilterDefinition;
 use Kora\DataProvider\OperatorImplementation\Filter\CallbackFilterImplementation;
 use Kora\DataProvider\OperatorImplementationsList;
@@ -54,7 +54,7 @@ class DbalImplementationList extends OperatorImplementationsList
 				DateFilterDefinition::class, new DateFilterImplementation()
 			)
 			->addImplementation(
-				DateRangeDefinition::class, new DateRangeFilterImplementation()
+				DateRangeFilterDefinition::class, new DateRangeFilterImplementation()
 			)
 			->addImplementation(
 				CallbackFilterDefinition::class, new CallbackFilterImplementation()
