@@ -48,7 +48,7 @@ class SingleOrderImplementationTest extends TestCase
 		}
 
 
-		$dataProvider = new DbalDataProvider(new OperatorImplementationsList(), $queryBuilder, new Mapper([], [ $orderColumn => $orderColumnMapping ]));
+		$dataProvider = new DbalDataProvider($queryBuilder, new OperatorImplementationsList(), new Mapper([], [ $orderColumn => $orderColumnMapping ]));
 
 		$orderDefinition = new SingleOrderDefinition([$orderColumn], $orderParamName, $orderDirName);
 		$orderDefinition

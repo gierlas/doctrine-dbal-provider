@@ -6,11 +6,13 @@ use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter\ChoiceFilterIm
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter\DateFilterImplementation;
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter\DateRangeFilterImplementation;
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter\EqualFilterImplementation;
+use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Filter\RangeFilterImplementation;
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Order\SingleOrderImplementation;
 use Kora\DataProvider\Doctrine\Dbal\OperatorImplementation\Pager\LimitOffsetPagerImplementation;
 use Kora\DataProvider\OperatorDefinition\Filter\ChoiceFilterDefinition;
 use Kora\DataProvider\OperatorDefinition\Filter\DateFilterDefinition;
 use Kora\DataProvider\OperatorDefinition\Filter\DateRangeDefinition;
+use Kora\DataProvider\OperatorDefinition\Filter\RangeFilterDefinition;
 use Kora\DataProvider\OperatorImplementation\Filter\CallbackFilterImplementation;
 use Kora\DataProvider\OperatorImplementationsList;
 use Kora\DataProvider\OperatorDefinition\Filter\CallbackFilterDefinition;
@@ -44,6 +46,9 @@ class DbalImplementationList extends OperatorImplementationsList
 			)
 			->addImplementation(
 				ChoiceFilterDefinition::class, new ChoiceFilterImplementation()
+			)
+			->addImplementation(
+				RangeFilterDefinition::class, new RangeFilterImplementation()
 			)
 			->addImplementation(
 				DateFilterDefinition::class, new DateFilterImplementation()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kora\DataProvider\Doctrine\Orm\Tests\OperatorImplementation\Filter;
+namespace Kora\DataProvider\Doctrine\Dbal\Tests\OperatorImplementation\Filter;
 
 use Doctrine\Common\Collections\ExpressionBuilder;
 use Doctrine\DBAL\Query\QueryBuilder;

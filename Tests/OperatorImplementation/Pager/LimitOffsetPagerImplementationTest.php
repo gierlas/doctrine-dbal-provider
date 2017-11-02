@@ -39,7 +39,7 @@ class LimitOffsetPagerImplementationTest extends TestCase
 			->andReturnSelf()
 			->once();
 
-		$dataProvider = new DbalDataProvider(new OperatorImplementationsList(), $queryBuilder, new Mapper());
+		$dataProvider = new DbalDataProvider($queryBuilder, new OperatorImplementationsList(), new Mapper());
 
 		$limitOffsetDefinition = new LimitOffsetPagerDefinition();
 		$limitOffsetDefinition
