@@ -1,6 +1,6 @@
 <?php
 
-namespace Kora\DataProvider\Doctrine\Orm\Tests\OperatorImplementation\Order;
+namespace Kora\DataProvider\Doctrine\Dbal\Tests\OperatorImplementation\Order;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 use Kora\DataProvider\Doctrine\Dbal\DbalDataProvider;

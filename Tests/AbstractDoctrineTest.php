@@ -3,7 +3,7 @@
 namespace Kora\DataProvider\Doctrine\Dbal\Tests;
 
 use Doctrine\ORM\EntityManager;
-use Kora\DataProvider\Doctrine\Orm\Tests\Fixtures\Foo;
+use Kora\DataProvider\Doctrine\Dbal\Tests\Fixtures\Foo;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ abstract class AbstractDoctrineTest extends TestCase
 	protected function prepareEntityManager(): EntityManager
 	{
 		$em = $this->getInitializedEntityManager([self::FIXTURES_PATH]);
-		$em->getConfiguration()->addEntityNamespace('Test', 'Kora\\DataProvider\\Doctrine\\Orm\\Tests\\Fixtures');
+		$em->getConfiguration()->addEntityNamespace('Test', 'Kora\\DataProvider\\Doctrine\\Dbal\\Tests\\Fixtures');
 		return $em;
 	}
 

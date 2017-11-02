@@ -1,6 +1,6 @@
 <?php
 
-namespace Kora\DataProvider\Doctrine\Orm\Tests\OperatorImplementation\Pager;
+namespace Kora\DataProvider\Doctrine\Dbal\Tests\OperatorImplementation\Pager;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 use Kora\DataProvider\Doctrine\Dbal\DbalDataProvider;

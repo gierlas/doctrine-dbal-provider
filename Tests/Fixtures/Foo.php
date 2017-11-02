@@ -1,6 +1,6 @@
 <?php
 
-namespace Kora\DataProvider\Doctrine\Orm\Tests\Fixtures;
+namespace Kora\DataProvider\Doctrine\Dbal\Tests\Fixtures;
 
 use Doctrine\ORM\Mapping as ORM;
 
